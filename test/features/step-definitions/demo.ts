@@ -21,4 +21,5 @@ Then(/^click on the first SeachItem$/, async function () {
 Then(/^search URL should be (.*)$/, async function (expectedURL) {
   let currentURL = await browser.getUrl();
   chai.expect(currentURL).to.equal(expectedURL);
+  console.log(JSON.stringify(browser));
 });
