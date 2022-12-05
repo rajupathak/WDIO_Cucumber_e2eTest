@@ -2,7 +2,8 @@ import { Given, When, Then } from "@wdio/cucumber-framework";
 import chai from "chai";
 
 Given(/^User is in login page$/, async function () {
-  await browser.url("https://www.saucedemo.com/");
+  //@ts-ignore
+  await browser.url(browser.config.testURL);
 });
 
 When(/^user enter userName and Password$/, async function () {

@@ -4,7 +4,9 @@
   "description": "wdio e2e cucumber",
   "main": "index.js",
   "scripts": {
-    "demo": "set HEADLESS=N && npx wdio wdio.conf.ts --cucumberOpts.tagExpression='@login'",
+    "test:debug": "set DEBUG=Y && set HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@login'",
+    "test:demo": "set DEBUG=N &&set HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@login'",
+    "test:login": "set DEBUG=N && set HEADLESS=N && npx wdio config/wdio.test.conf.ts --cucumberOpts.tagExpression='@demo'",
     "wdio": "wdio run test/wdio.conf.ts"
   },
   "author": "",
