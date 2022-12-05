@@ -280,8 +280,13 @@ export const config: Options.Testrunner = {
    * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
    * @param {Object}                 context  Cucumber World object
    */
-  // beforeScenario: function (world, context) {
-  // },
+  beforeScenario: function (world, context) {
+    // console.log(`>>world Object ${JSON.stringify(world)}`);
+    let testIdsArray = world.pickle.name.split(/:/);
+    console.log(`testId is ${testIdsArray}`);
+    //@ts-ignore
+    if (testIdsArray.length > 0) browser.config.TestId = testIdsArray[0];
+  },
   /**
    *
    * Runs before a Cucumber Step.
@@ -289,8 +294,10 @@ export const config: Options.Testrunner = {
    * @param {IPickle}            scenario scenario pickle
    * @param {Object}             context  Cucumber World object
    */
-  // beforeStep: function (step, scenario, context) {
-  // },
+  beforeStep: function (step, scenario, context) {
+    //@ts-ignore
+    this.TestId = browser.config.TestId;
+  },
   /**
    *
    * Runs after a Cucumber Step.

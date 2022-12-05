@@ -1,0 +1,153 @@
+{
+    "gherkinDocument": {
+        "feature": {
+            "tags": [],
+            "location": {
+                "line": 1,
+                "column": 1
+            },
+            "language": "en",
+            "keyword": "Feature",
+            "name": "Feature name",
+            "description": "",
+            "children": [
+                {
+                    "scenario": {
+                        "id": "7",
+                        "tags": [
+                            {
+                                "location": {
+                                    "line": 4,
+                                    "column": 5
+                                },
+                                "name": "@login",
+                                "id": "6"
+                            }
+                        ],
+                        "location": {
+                            "line": 5,
+                            "column": 5
+                        },
+                        "keyword": "Scenario Outline",
+                        "name": "<TestID>:Login",
+                        "description": "",
+                        "steps": [
+                            {
+                                "id": "0",
+                                "location": {
+                                    "line": 6,
+                                    "column": 9
+                                },
+                                "keyword": "Given ",
+                                "keywordType": "Context",
+                                "text": "User is in login page"
+                            },
+                            {
+                                "id": "1",
+                                "location": {
+                                    "line": 7,
+                                    "column": 9
+                                },
+                                "keyword": "When ",
+                                "keywordType": "Action",
+                                "text": "user enter userName and Password"
+                            },
+                            {
+                                "id": "2",
+                                "location": {
+                                    "line": 8,
+                                    "column": 9
+                                },
+                                "keyword": "Then ",
+                                "keywordType": "Outcome",
+                                "text": "User clicks on login button and logged in sucessfully"
+                            }
+                        ],
+                        "examples": [
+                            {
+                                "id": "5",
+                                "tags": [],
+                                "location": {
+                                    "line": 9,
+                                    "column": 9
+                                },
+                                "keyword": "Examples",
+                                "name": "",
+                                "description": "",
+                                "tableHeader": {
+                                    "id": "3",
+                                    "location": {
+                                        "line": 10,
+                                        "column": 13
+                                    },
+                                    "cells": [
+                                        {
+                                            "location": {
+                                                "line": 10,
+                                                "column": 15
+                                            },
+                                            "value": "TestID"
+                                        }
+                                    ]
+                                },
+                                "tableBody": [
+                                    {
+                                        "id": "4",
+                                        "location": {
+                                            "line": 11,
+                                            "column": 13
+                                        },
+                                        "cells": [
+                                            {
+                                                "location": {
+                                                    "line": 11,
+                                                    "column": 15
+                                                },
+                                                "value": "Login_001"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "comments": [],
+        "uri": "D:\\wdiocucumbere2e\\test\\features\\demo\\login.feature"
+    },
+    "pickle": {
+        "id": "11",
+        "uri": "D:\\wdiocucumbere2e\\test\\features\\demo\\login.feature",
+        "astNodeIds": [
+            "7",
+            "4"
+        ],
+        "name": "Login_001:Login",
+        "language": "en",
+        "steps": [
+            {
+                "id": "8",
+                "text": "User is in login page",
+                "type": "Context",
+                "astNodeIds": [
+                    "0",
+                    "4"
+                ],
+                "keyword": "Given "
+            },
+            {
+                "id": "9",
+                "text": "user enter userName and Password",
+                "type": "Action",
+                "astNodeIds": [
+                    "1",
+                    "4"
+                ],
+                "keyword": "When "
+            },
+            {
+                "id": "10",
+                "text":"User clicks on login button and logged in 
+successfully","type":"Outcome","astNodeIds":["2","4"],"keyword":"Then "}],"tags":[{"name":"@login","astNodeId":"6"}]},"testCaseStartedId":"31"}

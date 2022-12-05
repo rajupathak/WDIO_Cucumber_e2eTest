@@ -4,6 +4,7 @@ import chai from "chai";
 Given(/^User is in login page$/, async function () {
   //@ts-ignore
   await browser.url(browser.config.testURL);
+  this.appid = "1234";
 });
 
 When(/^user enter userName and Password$/, async function () {
@@ -17,6 +18,8 @@ When(/^user enter userName and Password$/, async function () {
 Then(
   /^User clicks on login button and logged in sucessfully$/,
   async function () {
+    console.log(`>>appId is: ${this.appid}`);
+    console.log(`>>testId is: ${this.TestId}`);
     let loginButton = await $(`#login-button`);
     await loginButton.click();
     let value = await (await $(`//span[text()='Products']`)).isDisplayed();
