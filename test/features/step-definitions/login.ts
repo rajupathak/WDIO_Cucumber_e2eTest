@@ -1,6 +1,6 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
 import chai from "chai";
-
+import logger from "../../helper/logger";
 Given(/^User is in login page$/, async function () {
   //@ts-ignore
   await browser.url(browser.config.testURL);
@@ -22,6 +22,9 @@ Then(
     console.log(`>>testId is: ${this.TestId}`);
     let loginButton = await $(`#login-button`);
     await loginButton.click();
+    logger.info(
+      `User has clicked on the element ${JSON.stringify(loginButton.selector)}`
+    );
     let value = await (await $(`//span[text()='Products']`)).isDisplayed();
     chai.expect(value).to.equal(true);
   }
