@@ -26,6 +26,6 @@ Then(
       `User has clicked on the element ${JSON.stringify(loginButton.selector)}`
     );
     let value = await (await $(`//span[text()='Products']`)).isDisplayed();
-    chai.expect(value).to.equal(true);
+    chai.expect(value).to.equal(false);
   }
 );
