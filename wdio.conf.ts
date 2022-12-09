@@ -231,6 +231,7 @@ export const config: Options.Testrunner = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   onPrepare: function (config, capabilities) {
+    console.log(`Runner Value${process.env.RUNNER}`);
     if (process.env.RUNNER === "LOCAL" && fs.existsSync("./allure-results")) {
       fs.rmdirSync("./allure-results", { recursive: true });
     }

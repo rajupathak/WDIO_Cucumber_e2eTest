@@ -1,35 +1,40 @@
 import { Given, When, Then } from "@wdio/cucumber-framework";
+import sauceHomePage from "../../pageobjects/sauce.home.page";
+import sauceProductPage from "../../pageobjects/product.page";
 import chai from "chai";
 import logger from "../../helper/logger";
 import reporter from "../../helper/reporter";
+
 Given(/^User is in login page$/, async function () {
+  reporter.addStep(this.TestId, "info", "Launch sauce URL");
   //@ts-ignore
-  await browser.url(browser.config.testURL);
+  await sauceHomePage.navigateTo(browser.config.testURL);
   reporter.addStep(this.TestId, "info", "Login Page Launched Successfully");
-  this.appid = "1234";
 });
 
 When(/^user enter userName and Password$/, async function () {
-  let userName = await $(`#user-name`);
-  await userName.setValue(process.env.userName_1);
-
-  let passWord = await $(`#password`);
-  await passWord.setValue(process.env.passWord_1);
+  try {
+    reporter.addStep(this.TestId, "info", "Login to sacue demo..");
+    await sauceHomePage.loginToSauceApp(
+      this.TestId,
+      process.env.userName_1,
+      process.env.passWord_1
+    );
+  } catch (err) {
+    err.message = `${this.TestId} Failed at login step), ${err.message}`;
+    throw err;
+  }
 });
 
 Then(
   /^User clicks on login button and logged in sucessfully$/,
   async function () {
-    console.log(`>>appId is: ${this.appid}`);
-    console.log(`>>testId is: ${this.TestId}`);
-    let loginButton = await $(`#login-button`);
-    await loginButton.click();
-    logger.info(
-      `User has clicked on the element ${JSON.stringify(loginButton.selector)}`
-    );
-    let value = await (await $(`//span[text()='Products']`)).isDisplayed();
+    reporter.addStep(this.TestId, "info", "Product page launched");
     try {
-      chai.expect(value).to.equal(false);
+      let productIsDisplayed = await sauceProductPage.checkProductsIsDisplayed(
+        this.TestID
+      );
+      chai.expect(productIsDisplayed).to.equal(true);
     } catch (err) {
       reporter.addStep(
         this.TestId,
@@ -39,6 +44,6 @@ Then(
         `${process.env.JIRA_URL}SAME-46350`
       );
     }
-    reporter.addStep(this.TestId, "info", "Logged in  Successfully");
+    reporter.addStep(this.TestId, "info", "Product Validation completed");
   }
 );
