@@ -15,7 +15,7 @@ jobs:
       userName_1: ${{secrets.userName_1}}
       passWord_1: ${{secrets.passWord_1}}
       JIRA_URL: ${{secrets.JIRA_URL}}
-      BROWSER_MODE: ${{secrets.BROWSER_MODE}}
+      HEADLESS: ${{secrets.HEADLESS}}
       LOGGER: ${{secrets.LOGGER}}
 
     steps:
