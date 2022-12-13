@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 import allure from "@wdio/allure-reporter";
 import fs from "fs";
 dotenv.config();
-//let headless = process.env.HEADLESS;
-//let debug = process.env.DEBUG;
+let headless = process.env.HEADLESS;
+let debug = process.env.LOGGER;
 export const config: Options.Testrunner = {
   //
   // ====================
@@ -89,14 +89,15 @@ export const config: Options.Testrunner = {
       // 5 instances get started at a time.
       maxInstances: 5,
       //
+
       browserName: "chrome",
       "goog:chromeOptions": {
         args:
-          process.env.BROWSER_MODE.toUpperCase() === "Y"
+          headless.toUpperCase() === "Y"
             ? [
                 "--disable-web-security",
                 "--headless",
-                "--diasble-dev-shm-usage",
+                "--disable-dev-shm-usage",
                 "--no-sandbox",
                 "--window-size=1920,1080",
               ]
