@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 import allure from "@wdio/allure-reporter";
 import fs from "fs";
 dotenv.config();
-let headless = process.env.HEADLESS;
-let debug = process.env.DEBUG;
+//let headless = process.env.HEADLESS;
+//let debug = process.env.DEBUG;
 export const config: Options.Testrunner = {
   //
   // ====================
@@ -92,7 +92,7 @@ export const config: Options.Testrunner = {
       browserName: "chrome",
       "goog:chromeOptions": {
         args:
-          headless.toUpperCase() === "Y"
+          process.env.BROWSER_MODE.toUpperCase() === "Y"
             ? [
                 "--disable-web-security",
                 "--headless",
@@ -108,12 +108,12 @@ export const config: Options.Testrunner = {
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
       // excludeDriverLogs: ['bugreport', 'server'],
     },
-    {
-      maxInstances: 3,
-      //
-      browserName: "firefox",
-      acceptInsecureCerts: true,
-    },
+    // {
+    //   maxInstances: 3,
+    //   //
+    //   browserName: "firefox",
+    //   acceptInsecureCerts: true,
+    // },
   ],
   //
   // ===================
@@ -122,7 +122,7 @@ export const config: Options.Testrunner = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: debug.toUpperCase() === "Y" ? "info" : "error",
+  logLevel: process.env.LOGGER.toUpperCase() === "Y" ? "info" : "error",
   //
   // Set specific log levels per logger
   // loggers:
